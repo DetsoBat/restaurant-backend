@@ -11,6 +11,7 @@ module.exports = ({ env }) => ({
         username: env('DATABASE_USERNAME', 'admin'),
         password: env('DATABASE_PASSWORD', 'mongol123'),
         ssl: env.bool('DATABASE_SSL', false),
+        timeout: 60000
       },
       options: {}
     },
