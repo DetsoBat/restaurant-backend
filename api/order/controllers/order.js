@@ -16,6 +16,7 @@ module.exports = {
    */
 
   create: async (ctx) => {
+    console.log("ctx", ctx)
     const { address, amount, dishes, token, city, state } = JSON.parse(
       ctx.request.body
     );
@@ -28,7 +29,7 @@ module.exports = {
       description: `Order ${new Date()} by ${ctx.state.user._id}`,
       source: token,
     });
-
+    console.log("charge", charge)
     // Register the order in the database
     const order = await strapi.services.order.create({
       user: ctx.state.user.id,
@@ -39,7 +40,7 @@ module.exports = {
       city,
       state,
     });
-
+    console.log("order", order)
     return order;
   },
 };
